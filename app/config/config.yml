@@ -64,3 +64,23 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+monolog:
+    channels: [stat]
+    handlers:
+        # log all errors
+        main:
+            type:         fingers_crossed
+            action_level: debug
+            handler:      streamed
+        streamed:
+            type:         rotating_file
+            path:         "%kernel.logs_dir%/app.log"
+            level:        debug
+            max_files:    15
+        stat:
+                    # log all messages (since debug is the lowest level)
+            level:    debug
+            type:     rotating_file
+            path:     '%kernel.logs_dir%/stat.log'
+            channels: [stat]
