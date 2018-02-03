@@ -11,3 +11,8 @@
 /bin/
 /composer.phar
 .htaccess.mine
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
